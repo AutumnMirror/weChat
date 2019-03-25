@@ -3,6 +3,8 @@ const wechat = require('wechat');
 const https = require('https');
 const app = express();
 
+const wxSDK = require('./routes/wx_sdk');
+
 const config = {
   token: 'weixin',
   appid: 'wx1c9bf5bbd5d400bf',
@@ -53,5 +55,6 @@ app.use('/wechat', wechat(config, (req, res, next) => {
   res.reply(message.Content);
 }))
 
+app.use('/wx', wxSDK);
 
 app.listen(80);
