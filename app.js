@@ -10,6 +10,10 @@ const config = {
   checkSignature: true // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
 
+// 静态资源
+app.use(express.static('public'));
+
+
 app.use('/wechat', wechat(config, (req, res, next) => {
   // wechat模块给我们的req对象上面添加的一些属性
   console.log(req.weixin);
